@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style type="text/css">
+.gm-style .gm-style-iw {
+	font-weight: 300;
+	font-size: 13px;
+	overflow: hidden
+}
+
+.gm-style .gm-iw {
+	color: #2c2c2c
+}
+
+.gm-style .gm-iw b {
+	font-weight: 400
+}
+
+.gm-style .gm-iw a:link, .gm-style .gm-iw a:visited {
+	color: #4272db;
+	text-decoration: none
+}
+
+.gm-style .gm-iw a:hover {
+	color: #4272db;
+	text-decoration: underline
+}
+
+.gm-style .gm-iw .gm-title {
+	font-weight: 400;
+	margin-bottom: 1px
+}
+
+.gm-style .gm-iw .gm-basicinfo {
+	line-height: 18px;
+	padding-bottom: 12px
+}
+
+.gm-style .gm-iw .gm-website {
+	padding-top: 6px
+}
+
+.gm-style .gm-iw .gm-photos {
+	padding-bottom: 8px;
+	-ms-user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none
+}
+
+.gm-style .gm-iw .gm-sv, .gm-style .gm-iw .gm-ph {
+	cursor: pointer;
+	height: 50px;
+	width: 100px;
+	position: relative;
+	overflow: hidden
+}
+
+.gm-style .gm-iw .gm-sv {
+	padding-right: 4px
+}
+
+.gm-style .gm-iw .gm-wsv {
+	cursor: pointer;
+	position: relative;
+	overflow: hidden
+}
+
+.gm-style .gm-iw .gm-sv-label, .gm-style .gm-iw .gm-ph-label {
+	cursor: pointer;
+	position: absolute;
+	bottom: 6px;
+	color: #fff;
+	font-weight: 400;
+	text-shadow: rgba(0, 0, 0, 0.7) 0 1px 4px;
+	font-size: 12px
+}
+
+.gm-style .gm-iw .gm-stars-b, .gm-style .gm-iw .gm-stars-f {
+	height: 13px;
+	font-size: 0
+}
+
+.gm-style .gm-iw .gm-stars-b {
+	position: relative;
+	background-position: 0 0;
+	width: 65px;
+	top: 3px;
+	margin: 0 5px
+}
+
+.gm-style .gm-iw .gm-rev {
+	line-height: 20px;
+	-ms-user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none
+}
+
+.gm-style.gm-china .gm-iw .gm-rev {
+	display: none
+}
+
+.gm-style .gm-iw .gm-numeric-rev {
+	font-size: 16px;
+	color: #dd4b39;
+	font-weight: 400
+}
+
+.gm-style .gm-iw.gm-transit {
+	margin-left: 15px
+}
+
+.gm-style .gm-iw.gm-transit td {
+	vertical-align: top
+}
+
+.gm-style .gm-iw.gm-transit .gm-time {
+	white-space: nowrap;
+	color: #676767;
+	font-weight: bold
+}
+
+.gm-style .gm-iw.gm-transit img {
+	width: 15px;
+	height: 15px;
+	margin: 1px 5px 0 -20px;
+	float: left
+}
+
+.gm-iw {
+	text-align: left;
+}
+
+.gm-iw .gm-numeric-rev {
+	float: left;
+}
+
+.gm-iw .gm-photos, .gm-iw .gm-rev {
+	direction: ltr;
+}
+
+.gm-iw .gm-stars-f, .gm-iw .gm-stars-b {
+	background:
+		/* url("https://maps.gstatic.com/mapfiles/api-3/images/review_stars_hdpi.png") */
+		no-repeat;
+	background-size: 65px 26px;
+	float: left;
+}
+
+.gm-iw .gm-stars-f {
+	background-position: left -13px;
+}
+
+.gm-iw .gm-sv-label, .gm-iw .gm-ph-label {
+	left: 4px;
+}
+</style>
+<style type="text/css">
+.gm-style .gm-style-mtc label, .gm-style .gm-style-mtc div {
+	font-weight: 400
+}
+</style>
+<link type="text/css" rel="stylesheet" href="./GoogleMap_files/css">
+<style type="text/css">
+.gm-style .gm-style-cc span, .gm-style .gm-style-cc a, .gm-style .gm-style-mtc div
+	{
+	font-size: 10px
+}
+</style>
+<style type="text/css">
+@media print {
+	.gm-style .gmnoprint, .gmnoprint {
+		display: none
+	}
+}
+
+@media screen {
+	.gm-style .gmnoscreen, .gmnoscreen {
+		display: none
+	}
+}
+</style>
+<style type="text/css">
+.gm-style {
+	font-family: Roboto, Arial, sans-serif;
+	font-size: 11px;
+	font-weight: 400;
+	text-decoration: none
+}
+
+.gm-style img {
+	max-width: none
+}
+</style>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Tweet Map">
+<meta name="author" content="Liang Li">
+
+<!-- <script src="./GoogleMap_files/js"></script> -->
+
+<title>Tweet Map</title>
+
+<link href="./GoogleMap_files/bootstrap.min.css" rel="stylesheet">
+
+<style>
+html, body {
+	height: 100%;
+}
+
+.dropdown, .dropup {
+    position: absolute;
+    left: 15px;
+    top: 220px;
+}
+
+.text {
+    position: absolute;
+    left: 15px;
+    top: 120px;
+}
+
+.text2 {
+    position: absolute;
+    left: 15px;
+    top: 400px;
+}
+
+#map {
+	height: 70%;
+    width: 75%;
+    left: 20%;
+    right: 3px;
+    top: 3cm;
+}
+
+#floating-panel {
+	position: absolute;
+	top: 65px;
+	left: 30%;
+	z-index: 5;
+	background-color: #fff;
+	padding: 5px;
+	border: 1px solid #999;
+	text-align: center;
+	font-family: 'Roboto', 'sans-serif';
+	line-height: 30px;
+	padding-left: 10px;
+}
+</style>
+
+</head>
+
+
+<body>
+	<div id="floating-panel">
+		<input onclick="showMarkers();" type=button value="Latest Tweet">
+		<input onclick="clearMarkers();" type=button value="Delete Markers">
+		<input onclick="myFunction('hour');" type=button value="Last One Hour">
+		<input onclick="myFunction('day');" type=button value="Last One Day">
+		<input onclick="myFunction('more');" type=button value="All">
+	</div>
+	<div id="map"></div>
+
+	<div class="text">
+		<b style="color: red"> CHOOSE KEY WORD FIRST </b><br>Auto-Refresh
+		every 3s <br> Tweets Num Displayed:
+		<p id="dbSize" style="color: red"></p>
+	</div>
+
+<div class="dropdown">
+	<div >
+		<button class="btn btn-primary dropdown-toggle" type="button"
+			data-toggle="dropdown">
+			Key Word <span class="caret"></span>
+		</button>
+		<ul class="dropdown-menu">
+			<li><a href="#" onclick="myFunction('sport') ">sports</a></li>
+			<li><a href="#" onclick="myFunction('job') ">job</a></li>
+			<li><a href="#" onclick="myFunction('love') ">love</a></li>
+			<li><a href="#" onclick="myFunction('food') ">food</a></li>
+			<li><a href="#" onclick="myFunction('all') ">all in db</a></li>
+		</ul>
+	</div>
+	<br>
+	<div >
+		<button class="btn btn-primary dropdown-toggle" type="button"
+			data-toggle="dropdown">
+			Sentiment <span class="caret"></span>
+		</button>
+		<ul class="dropdown-menu">
+			<li><a href="#" onclick="judge('positive') ">positive</a></li>
+			<li><a href="#" onclick="judge('negative') ">negative</a></li>
+			<li><a href="#" onclick="judge('neutral') ">neutral</a></li>
+		</ul>
+	</div>
+	<br>
+	<div >
+		<button class="btn btn-primary dropdown-toggle" type="button"
+			data-toggle="dropdown">
+			Trend <span class="caret"></span>  
+		</button>
+		<ul class="dropdown-menu">
+			<li><a href="#" onclick="sendTrend('NYC') ">NYC</a></li>
+			<li><a href="#" onclick="sendTrend('US') ">US</a></li>
+			<li><a href="#" onclick="sendTrend('UK') ">UK</a></li>
+			<li><a href="#" onclick="sendTrend('Turkey') ">Turkey</a></li>
+			<li><a href="#" onclick="sendTrend('Japan') ">Japan</a></li>
+			<li><a href="#" onclick="sendTrend('Spain') ">Spain</a></li>
+			<li><a href="#" onclick="sendTrend('Germany') ">Germany</a></li>
+			<li><a href="#" onclick="sendTrend('France') ">France</a></li>
+		</ul>
+	</div>
+</div>
+	
+	<div class="text2">
+		<b style="color: red"> TOP 5: </b>
+		<p id="trend1"></p>
+		<p id="trend2"></p>
+		<p id="trend3"></p>
+		<p id="trend4"></p>
+		<p id="trend5"></p>
+	</div>
+
+	<!-- <button id="button" style="height:50px;width:100px">Start</button> -->
+
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand"
+					href="file:///Users/Liang/Documents/workspace/tweetMap/WebContent/GoogleMap.html#">Tweet
+					Map</a>
+			</div>
+			<div id="navbar" class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li class="active"><a
+						href="file:///Users/Liang/Documents/workspace/tweetMap/WebContent/GoogleMap.html#">Tweet
+							Map</a></li>
+					<li><a
+						href="file:///Users/Liang/Documents/workspace/tweetMap/WebContent/GoogleMap.html#about">About</a></li>
+				</ul>
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+	</nav>
+
+	<script
+		src="//maps.googleapis.com/maps/api/js?key=AIzaSyB8GH0S-NOoXa-IR4tYwnaNwjegW521JHA&signed_in=true&libraries=visualization">
+		
+	</script>
+	<script>
+		var marker_mode = false;
+		var myVar;
+		var hmData = [],hmData1 = [], hmData2 = [];
+		var markers = [];
+		var map, heatmap,heatmap1,heatmap2;
+		var webSocket = new WebSocket('ws://52.32.102.196:8080/websocket');  
+		var dbSize;
+
+		webSocket.onerror = function(event) {
+			onError(event)
+		};
+
+		webSocket.onopen = function(event) {
+			onOpen(event)
+		};
+
+		webSocket.onmessage = function(event) {
+			onMessage(event)
+		};
+
+		function onMessage(event) {
+			var msg = JSON.parse(event.data);
+			if (msg['1'] == null){
+				/* var msg = JSON.parse(event.data); */
+	 			var lat = msg['GeoLocation'][0];
+				var lon = msg['GeoLocation'][1];
+				dbSize = msg['GeoLocation'][2];
+				var sentiment = msg['Sentiment'];
+				var myLatlng = new google.maps.LatLng(lat, lon);
+				hmData.push(myLatlng);
+				if(sentiment == "positive")
+					hmData1.push(myLatlng);
+				else if (sentiment == "negative")
+					hmData2.push(myLatlng);
+			}
+			else {
+				document.getElementById("trend1").innerHTML = msg['1'];
+				document.getElementById("trend2").innerHTML = msg['2'];
+				document.getElementById("trend3").innerHTML = msg['3'];
+				document.getElementById("trend4").innerHTML = msg['4'];
+				document.getElementById("trend5").innerHTML = msg['5'];
+			}
+		}
+
+		function onOpen(event) {
+			console.log('Now Connection established');
+		}
+
+		function onError(event) {
+			alert(event.data);
+		}
+
+		function initMap() {
+			var startPoint = new google.maps.LatLng(37.774546, -10.433523);
+			map = new google.maps.Map(document.getElementById('map'), {
+				  center: startPoint,
+			      zoom:2
+			});
+			
+			heatmap = new google.maps.visualization.HeatmapLayer({
+				map : map
+			});
+			 
+
+			heatmap1 = new google.maps.visualization.HeatmapLayer({
+				map : null
+			});
+		
+		   var gradient1 = [ 'rgba(255, 0, 0, 0)', 'rgba(255, 0, 0, 1)',
+					'rgba(235, 0, 0, 1)', 'rgba(215, 0, 0, 1)',
+					'rgba(205, 0, 0, 1)', 'rgba(195, 0, 0, 1)',
+					'rgba(155, 0, 0, 1)', 'rgba(110, 0, 0, 1)',
+					'rgba(80, 0, 0, 1)', 'rgba(30, 0, 0, 1)' ]
+
+			heatmap1.set('gradient', gradient1);
+
+			heatmap2 = new google.maps.visualization.HeatmapLayer({
+				map : null
+
+			});
+			var gradient2 = [ 'rgba(0, 255, 255, 0)', 'rgba(0, 255, 255, 1)',
+					'rgba(0, 225, 255, 1)', 'rgba(0, 200, 255, 1)',
+					'rgba(0, 175, 255, 1)', 'rgba(0, 160, 255, 1)',
+					'rgba(0, 145, 223, 1)', 'rgba(0, 125, 191, 1)',
+					'rgba(0, 110, 255, 1)', 'rgba(0, 100, 255, 1)',
+					'rgba(0, 75, 255, 1)', 'rgba(0, 50, 255, 1)',
+					'rgba(0, 25, 255, 1)', 'rgba(0, 0, 255, 1)' ]
+			heatmap2.set('gradient', gradient2);
+
+		}
+		google.maps.event.addDomListener(window, 'load', initMap);
+
+		function runHeatmap() {
+			/* 			if (heatmap1 == null)
+			 heatmap1.setMap(map); */
+
+			var pointArray = new google.maps.MVCArray(hmData);
+			heatmap.setData(pointArray);
+			var pointArray1 = new google.maps.MVCArray(hmData1);
+			heatmap1.setData(pointArray1);
+			var pointArray2 = new google.maps.MVCArray(hmData2);
+			heatmap2.setData(pointArray2);
+
+		}
+
+		function showMarkers() {
+			clearMarkers();
+			marker_mode = true;
+			for (var i = hmData.length - 1; i >= hmData.length - 5; i--) {
+				var marker = new google.maps.Marker({
+					position : hmData[i],
+					map : map,
+					animation : google.maps.Animation.BOUNCE
+				});
+				markers.push(marker);
+			}
+		}
+
+		function clearMarkers() {
+			marker_mode = false;
+			for (var i = 0; i < markers.length; i++) {
+				markers[i].setMap(null);
+			}
+			markers = [];
+		}
+
+		function myFunction(msg) {
+			clearInterval(myVar);
+			runHeatmap();
+			hmData = [];
+			hmData1 = [];
+			hmData2 = [];
+
+			webSocket.send(msg);
+			myVar = setInterval(function() {
+				runHeatmap();
+				if (marker_mode)
+					showMarkers();
+				webSocket.send(msg);
+				document.getElementById("dbSize").innerHTML = dbSize;
+			}, 3000);
+		}
+
+		function judge(msg) {
+			if (msg == 'positive') {
+				//console.log("positive!!!!!!!");
+				heatmap1.set('map',heatmap1.get('map')? null : map)
+			} else if (msg == 'negative') {
+				heatmap2.set('map',heatmap2.get('map')? null : map)
+				//heatmap1.set('gradient', gradient1);
+			} else {
+				heatmap.set('map',heatmap.get('map')? null : map)
+
+			}
+		}
+		
+		function sendTrend(trend){
+			webSocket.send(trend);
+		}
+	</script>
+
+
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="./GoogleMap_files/jquery.min.js"></script>
+	<script src="./GoogleMap_files/bootstrap.min.js"></script>
+
+
+</body>
+</html>
